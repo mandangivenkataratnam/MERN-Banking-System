@@ -1,0 +1,490 @@
+.branches-page {
+    width: 100%;
+}
+
+/* HEADER */
+.branches-header {
+    margin-bottom: 30px;
+}
+
+.branches-title {
+    font-size: 2.2rem;
+    color: #111827;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.branches-subtitle {
+    color: #6b7280;
+    font-size: 1rem;
+}
+
+/* GRID */
+.branches-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-top: 20px;
+}
+
+/* CARD */
+.branch-card {
+    background: white;
+    border-radius: 22px;
+    padding: 26px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    border: 1px solid #edf1f7;
+    transition: 0.3s ease;
+}
+
+.branch-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.12);
+}
+
+
+/* ICON */
+.branch-icon {
+    width: 62px;
+    height: 62px;
+    border-radius: 16px;
+    background: linear-gradient(
+        135deg,
+        #162447,
+        #1f4068
+    );
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    margin-bottom: 22px;
+    box-shadow: 0 8px 18px rgba(31,64,104,0.22);
+}
+
+
+/* TITLE */
+.branch-card h2 {
+    font-size: 1.3rem;
+    color: #111827;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+
+/* DETAILS */
+.branch-details {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 24px;
+}
+
+.branch-details p {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #4b5563;
+    font-size: 0.95rem;
+}
+
+.branch-details svg {
+    color: #2563eb;
+}
+
+
+/* BUTTON */
+.branch-btn {
+    width: 100%;
+    border: none;
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #3b82f6
+    );
+    color: white;
+    padding: 13px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.branch-btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.95;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .branches-title {
+        font-size: 1.8rem;
+    }
+
+    .branches-grid {
+        gap: 18px;
+    }
+
+    .branch-card {
+        padding: 22px;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .branches-title {
+        font-size: 1.5rem;
+    }
+
+    .branches-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .branch-card {
+        border-radius: 18px;
+        padding: 20px;
+    }
+
+    .branch-card h2 {
+        font-size: 1.1rem;
+    }
+
+    .branch-details p {
+        font-size: 0.9rem;
+    }
+}
+
+/* ADD BELOW EXISTING CSS */
+.branch-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+    padding: 20px;
+}
+
+.branch-modal {
+    width: 100%;
+    max-width: 520px;
+    background: white;
+    border-radius: 28px;
+    padding: 34px 28px;
+    position: relative;
+    box-shadow:
+    0 20px 40px rgba(0,0,0,0.2);
+    animation: branchPopup 0.3s ease;
+}
+
+@keyframes branchPopup {
+
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+/* CLOSE BUTTON */
+.close-branch-modal {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 12px;
+    background: #fee2e2;
+    color: #dc2626;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+}
+
+
+/* TOP ICON */
+.modal-top-icon {
+    width: 85px;
+    height: 85px;
+    border-radius: 22px;
+    background:
+    linear-gradient(
+        135deg,
+        #162447,
+        #2563eb
+    );
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    margin: 0 auto 24px;
+    box-shadow:
+    0 12px 28px rgba(37,99,235,0.25);
+}
+
+
+/* TITLE */
+.branch-modal h2 {
+    text-align: center;
+    color: #111827;
+    margin-bottom: 30px;
+    font-size: 1.7rem;
+}
+
+
+/* DETAILS */
+.modal-details {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.modal-detail-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background: #f8fafc;
+    padding: 18px;
+    border-radius: 18px;
+}
+
+.modal-detail-item svg {
+    color: #2563eb;
+    font-size: 1.2rem;
+    margin-top: 3px;
+}
+
+.modal-detail-item h4 {
+    color: #111827;
+    margin-bottom: 6px;
+    font-size: 1rem;
+}
+
+.modal-detail-item p {
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+/* MOBILE */
+@media (max-width: 500px) {
+
+    .branch-modal {
+        padding: 28px 20px;
+    }
+
+    .branch-modal h2 {
+        font-size: 1.4rem;
+    }
+
+    .modal-detail-item {
+        padding: 16px;
+    }
+}
+
+/* ADD BRANCH BUTTON */
+.add-branch-btn {
+    border: none;
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #3b82f6
+    );
+    color: white;
+    padding: 13px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s ease;
+    box-shadow:
+    0 8px 18px rgba(37,99,235,0.25);
+}
+
+.add-branch-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* ACTIONS */
+.branch-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.edit-branch-btn,
+.delete-branch-btn {
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s ease;
+    font-size: 1rem;
+}
+
+.edit-branch-btn {
+    background: #dbeafe;
+    color: #2563eb;
+}
+
+.edit-branch-btn:hover {
+    background: #2563eb;
+    color: white;
+}
+
+.delete-branch-btn {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.delete-branch-btn:hover {
+    background: #dc2626;
+    color: white;
+}
+
+
+/* FORM MODAL */
+.branch-form-modal {
+    width: 100%;
+    max-width: 520px;
+    background: white;
+    border-radius: 28px;
+    padding: 30px;
+    animation: branchPopup 0.3s ease;
+}
+
+
+/* HEADER */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.modal-header h2 {
+    color: #111827;
+}
+
+
+/* FORM */
+.branch-form-modal form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.branch-form-modal input {
+    width: 100%;
+    border: 1px solid #e5e7eb;
+    background: #f8fafc;
+    padding: 15px 16px;
+    border-radius: 14px;
+    outline: none;
+    font-size: 0.95rem;
+    transition: 0.3s ease;
+}
+
+.branch-form-modal input:focus {
+    border-color: #2563eb;
+    box-shadow:
+    0 0 0 4px rgba(37,99,235,0.12);
+}
+
+
+/* SAVE BUTTON */
+.save-branch-btn {
+    border: none;
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #3b82f6
+    );
+    color: white;
+    padding: 15px;
+    border-radius: 14px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s ease;
+    margin-top: 10px;
+}
+
+.save-branch-btn:hover {
+    transform: translateY(-2px);
+}
+
+
+/* RESPONSIVE FIXES */
+@media (max-width: 768px) {
+    .branches-header {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+    }
+
+    .add-branch-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .branch-actions {
+        flex-wrap: wrap;
+    }
+
+    .branch-btn {
+        flex: 1;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    .branches-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .branch-card {
+        padding: 18px;
+    }
+
+    .branch-icon {
+        width: 54px;
+        height: 54px;
+        font-size: 1.2rem;
+    }
+
+    .branch-actions {
+        gap: 8px;
+    }
+
+    .edit-branch-btn,
+    .delete-branch-btn {
+        width: 42px;
+        height: 42px;
+    }
+
+    .branch-form-modal {
+        padding: 22px 18px;
+        border-radius: 20px;
+    }
+
+    .modal-header h2 {
+        font-size: 1.3rem;
+    }
+}

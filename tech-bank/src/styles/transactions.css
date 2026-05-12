@@ -1,0 +1,478 @@
+.transactions-page {
+    width: 100%;
+}
+
+/* HEADER */
+.transactions-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    gap: 20px;
+}
+
+.transactions-title {
+    font-size: 2.2rem;
+    color: #111827;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.transactions-subtitle {
+    color: #6b7280;
+    font-size: 1rem;
+}
+
+/* BUTTON */
+.new-transaction-btn {
+    border: none;
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #3b82f6
+    );
+    color: white;
+    padding: 13px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s ease;
+    box-shadow: 0 8px 18px rgba(37,99,235,0.25);
+}
+
+.new-transaction-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* STATS */
+.transactions-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 22px;
+    margin-bottom: 24px;
+}
+
+.transaction-card {
+    background: white;
+    padding: 24px;
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+/* ICON */
+.transaction-icon {
+    width: 62px;
+    height: 62px;
+    border-radius: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.4rem;
+}
+
+.credit-icon {
+    background: linear-gradient(
+        135deg,
+        #16a34a,
+        #22c55e
+    );
+}
+
+.debit-icon {
+    background: linear-gradient(
+        135deg,
+        #dc2626,
+        #ef4444
+    );
+}
+
+.total-icon {
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #3b82f6
+    );
+}
+
+/* SEARCH */
+.transaction-search {
+    background: white;
+    padding: 14px 18px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+.transaction-search svg {
+    color: #6b7280;
+}
+
+.transaction-search input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 1rem;
+}
+
+/* TABLE */
+.transactions-table-container {
+    background: white;
+    border-radius: 22px;
+    overflow-x: auto;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.transactions-table-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.transactions-table-container th {
+    background: #f8fafc;
+    color: #374151;
+    padding: 18px;
+    text-align: left;
+}
+
+.transactions-table-container td {
+    padding: 18px;
+    border-top: 1px solid #edf1f7;
+    color: #4b5563;
+}
+
+/* BADGES */
+.credit-badge,
+.debit-badge {
+    padding: 7px 12px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.credit-badge {
+    background: #dcfce7;
+    color: #16a34a;
+}
+
+.debit-badge {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+/* STATUS */
+.status {
+    padding: 7px 12px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.success {
+    background: #dcfce7;
+    color: #16a34a;
+}
+
+.pending {
+    background: #fef3c7;
+    color: #d97706;
+}
+
+.failed {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .transactions-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .transactions-title {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .transactions-title {
+        font-size: 1.5rem;
+    }
+
+    .transactions-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .new-transaction-btn {
+        width: 100%;
+    }
+
+    .transactions-table-container th,
+    .transactions-table-container td {
+        padding: 14px;
+        font-size: 0.9rem;
+    }
+}
+
+/* ADD BELOW EXISTING CSS */
+.transaction-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+    padding: 20px;
+}
+
+.transaction-modal {
+    width: 100%;
+    max-width: 520px;
+    background: white;
+    border-radius: 26px;
+    padding: 30px;
+    box-shadow:
+    0 20px 40px rgba(0,0,0,0.18);
+    animation: transactionPopup 0.3s ease;
+}
+
+@keyframes transactionPopup {
+
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+/* HEADER */
+.transaction-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 26px;
+}
+
+.transaction-modal-header h2 {
+    color: #111827;
+    font-size: 1.5rem;
+}
+
+/* CLOSE */
+.close-transaction-modal {
+    border: none;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: #fee2e2;
+    color: #dc2626;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* INPUTS */
+.transaction-input-group {
+    margin-bottom: 22px;
+}
+
+.transaction-input-group label {
+    display: block;
+    margin-bottom: 10px;
+    color: #374151;
+    font-weight: 600;
+}
+
+.transaction-input-group input,
+.transaction-input-group select {
+    width: 100%;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 15px;
+    outline: none;
+    font-size: 1rem;
+    transition: 0.3s ease;
+}
+
+.transaction-input-group input:focus,
+.transaction-input-group select:focus {
+    border-color: #2563eb;
+    box-shadow:
+    0 0 0 4px rgba(37,99,235,0.12);
+}
+
+
+/* SAVE BUTTON */
+.save-transaction-btn {
+    width: 100%;
+    border: none;
+    background:
+    linear-gradient(
+        135deg,
+        #2563eb,
+        #3b82f6
+    );
+    color: white;
+    padding: 15px;
+    border-radius: 14px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.save-transaction-btn:hover {
+    transform: translateY(-2px);
+}
+
+
+
+/* RESPONSIVE FIXES */
+@media (max-width: 768px) {
+
+    .transactions-header {
+        gap: 16px;
+    }
+
+    .new-transaction-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .transactions-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .transaction-card {
+        padding: 20px;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    .transactions-page {
+        overflow-x: hidden;
+    }
+
+    .transaction-search {
+        padding: 12px 14px;
+    }
+
+    .transaction-icon {
+        width: 54px;
+        height: 54px;
+        font-size: 1.2rem;
+    }
+
+    .transaction-card h2 {
+        font-size: 1.5rem;
+    }
+
+    .transactions-table-container table {
+        min-width: 720px;
+    }
+
+    .transaction-modal {
+        padding: 22px 18px;
+        border-radius: 20px;
+    }
+
+    .transaction-modal-header h2 {
+        font-size: 1.2rem;
+    }
+
+    .transaction-input-group input,
+    .transaction-input-group select {
+        padding: 13px;
+    }
+
+    .save-transaction-btn {
+        padding: 14px;
+    }
+}
+
+
+
+
+
+/* ACTION BUTTONS */
+
+.transaction-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.transaction-edit-btn,
+.transaction-delete-btn {
+    border: none;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s ease;
+    font-size: 0.95rem;
+}
+
+
+/* EDIT */
+.transaction-edit-btn {
+    background: #dbeafe;
+    color: #2563eb;
+}
+
+.transaction-edit-btn:hover {
+    background: #2563eb;
+    color: white;
+    transform: translateY(-2px);
+}
+
+
+/* DELETE */
+.transaction-delete-btn {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.transaction-delete-btn:hover {
+    background: #dc2626;
+    color: white;
+    transform: translateY(-2px);
+}
+
+
+/* MOBILE */
+@media (max-width: 500px) {
+
+    .transaction-actions {
+        gap: 8px;
+    }
+
+    .transaction-edit-btn,
+    .transaction-delete-btn {
+        width: 34px;
+        height: 34px;
+        font-size: 0.85rem;
+    }
+}

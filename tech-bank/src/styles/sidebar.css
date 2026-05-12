@@ -1,0 +1,194 @@
+.sidebar {
+    position: fixed;
+    top: 75px;
+    left: 0;
+    width: 270px;
+    height: calc(100vh - 75px);
+    background: linear-gradient(
+        180deg,
+        #162447,
+        #1b1f3b
+    );
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px 18px;
+    box-shadow: 4px 0 16px rgba(0,0,0,0.12);
+    z-index: 999;
+}
+
+
+/* HEADER */
+.sidebar-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+.bank-logo {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid rgba(255,255,255,0.12);
+    padding: 8px;
+    background: white;
+    margin-bottom: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.sidebar-title {
+    color: white;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* LINKS */
+.sidebar-links {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex: 1;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: #dbe4ff;
+    text-decoration: none;
+    padding: 14px 16px;
+    border-radius: 14px;
+    transition: 0.3s ease;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+
+/* HOVER */
+.sidebar-link:hover {
+    background: rgba(255,255,255,0.08);
+    color: white;
+    transform: translateX(4px);
+}
+
+
+/* ACTIVE */
+.sidebar-link.active {
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #3b82f6
+    );
+    color: white;
+    box-shadow: 0 8px 18px rgba(37,99,235,0.28);
+}
+
+
+/* ICON */
+.sidebar-link svg {
+    font-size: 1.1rem;
+}
+
+
+/* BOTTOM */
+.sidebar-bottom {
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+/* LOGOUT */
+.logout-btn-sidebar {
+    width: 100%;
+    border: none;
+    background: crimson;
+    color: white;
+    padding: 13px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: 0.3s ease;
+}
+
+.logout-btn-sidebar:hover {
+    background: #b8002e;
+    transform: translateY(-2px);
+}
+
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+    .sidebar {
+        width: 82px;
+        padding: 18px 10px;
+    }
+
+    .sidebar-title,
+    .sidebar-link span,
+    .profile-details,
+    .logout-btn-sidebar span {
+        display: none;
+    }
+
+    .sidebar-header {
+        margin-bottom: 24px;
+    }
+
+    .bank-logo {
+        width: 58px;
+        height: 58px;
+    }
+
+    .sidebar-link {
+        justify-content: center;
+        padding: 14px;
+    }
+
+    .sidebar-link svg {
+        font-size: 1.3rem;
+    }
+
+    .logout-btn-sidebar {
+        padding: 12px;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .sidebar {
+        width: 70px;
+        padding: 14px 8px;
+        top: 70px;
+        height: calc(100vh - 70px);
+    }
+
+    .sidebar-header {
+        margin-bottom: 18px;
+    }
+
+    .bank-logo {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 10px;
+    }
+
+    .sidebar-link {
+        padding: 12px;
+        justify-content: center;
+    }
+
+    .sidebar-link svg {
+        font-size: 1.1rem;
+    }
+
+    .logout-btn-sidebar {
+        padding: 10px;
+    }
+}

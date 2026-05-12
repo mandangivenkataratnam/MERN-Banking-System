@@ -1,0 +1,237 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.login-page-content {
+    width: 100%;
+    min-height: 100vh;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f4f7fb;
+    color: #111827;
+    overflow-x: hidden;
+}
+
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+
+/* LINKS */
+a {
+    text-decoration: none;
+}
+
+/* BUTTONS */
+button {
+    font-family: inherit;
+}
+
+/* LAYOUT */
+.layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* PAGE CONTENT */
+.page-content {
+    margin-left: 260px;
+    width: 100%;
+    padding: 100px 30px 30px;
+    transition: 0.3s ease;
+}
+
+/* COMMON CARD */
+.dashboard-card,
+.branch-card,
+.transaction-card,
+.customer-stats-card {
+    background: white;
+    border-radius: 22px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    border: 1px solid #edf1f7;
+    transition: 0.3s ease;
+}
+
+.dashboard-card:hover,
+.branch-card:hover,
+.transaction-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.12);
+}
+
+
+/* COMMON TITLES */
+.page-title,
+.dashboard-title,
+.customers-title,
+.transactions-title,
+.branches-title {
+    font-size: 2.2rem;
+    color: #111827;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+/* COMMON SUBTITLE */
+.page-subtitle,
+.dashboard-subtitle,
+.customers-subtitle,
+.transactions-subtitle,
+.branches-subtitle {
+    color: #6b7280;
+    font-size: 1rem;
+    margin-bottom: 28px;
+}
+
+
+/* COMMON TABLE STYLE */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: #f8fafc;
+    color: #374151;
+    padding: 18px;
+    text-align: left;
+    font-size: 0.95rem;
+}
+
+td {
+    padding: 18px;
+    border-top: 1px solid #edf1f7;
+    color: #4b5563;
+}
+
+
+/* INPUTS */
+input {
+    font-family: inherit;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .page-content {
+        margin-left: 80px;
+        padding: 95px 18px 20px;
+    }
+
+    .page-title,
+    .dashboard-title,
+    .customers-title,
+    .transactions-title,
+    .branches-title {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .page-content {
+        margin-left: 0;
+        padding: 90px 14px 20px;
+    }
+
+    .page-title,
+    .dashboard-title,
+    .customers-title,
+    .transactions-title,
+    .branches-title {
+        font-size: 1.5rem;
+    }
+
+    th,
+    td {
+        padding: 14px;
+        font-size: 0.9rem;
+    }
+}
+
+
+
+/* RESPONSIVE TABLE */
+.customers-table-container,
+.transactions-table-container {
+    overflow-x: auto;
+}
+
+
+/* RESPONSIVE MODALS */
+.branch-modal,
+.branch-form-modal,
+.transaction-modal {
+    width: 100%;
+    max-width: 500px;
+}
+
+/* RESPONSIVE IMAGES */
+img {
+    max-width: 100%;
+    display: block;
+}
+
+
+/* MOBILE FIXES */
+@media (max-width: 768px) {
+    .dashboard-grid,
+    .transactions-stats,
+    .branches-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .customers-header,
+    .transactions-header,
+    .branches-header,
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .add-customer-btn,
+    .new-transaction-btn,
+    .add-branch-btn {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    .branch-modal,
+    .branch-form-modal,
+    .transaction-modal {
+        padding: 20px;
+        border-radius: 18px;
+    }
+
+    .dashboard-card,
+    .branch-card,
+    .transaction-card {
+        padding: 20px;
+    }
+
+    .card-content h2 {
+        font-size: 1.5rem;
+    }
+}
