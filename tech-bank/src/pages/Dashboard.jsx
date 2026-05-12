@@ -1,6 +1,6 @@
-import React,{useEffect,useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import DashboardCard from '../components/DashboardCard'
 
 import {
@@ -10,46 +10,46 @@ import {
 
 import '../styles/dashboard.css'
 
-const Dashboard=()=>{
+const Dashboard = () => {
 
-  const [customers,setCustomers]=useState([])
-  const [transactions,setTransactions]=useState([])
-  const [user,setUser]=useState(null)
+  const [customers, setCustomers] = useState([])
+  const [transactions, setTransactions] = useState([])
+  const [user, setUser] = useState(null)
 
-  useEffect(()=>{
+  useEffect(() => {
 
     fetchDashboardData()
 
-    const storedUser=JSON.parse(
+    const storedUser = JSON.parse(
       localStorage.getItem('user')
     )
 
     setUser(storedUser)
 
-  },[])
+  }, [])
 
-  const fetchDashboardData=async()=>{
+  const fetchDashboardData = async () => {
 
-    try{
+    try {
 
-      const customerResponse=await axios.get(
-        'http://localhost:4300/customers'
+      const customerResponse = await axios.get(
+        'https://mern-banking-system-mvxw.onrender.com/customers'
       )
 
-      const transactionResponse=await axios.get(
-        'http://localhost:4300/transactions'
+      const transactionResponse = await axios.get(
+        'https://mern-banking-system-mvxw.onrender.com/transactions'
       )
 
       setCustomers(customerResponse.data)
 
       setTransactions(transactionResponse.data)
 
-    }catch(error){
+    } catch (error) {
       console.log(error)
     }
   }
 
-  return(
+  return (
     <div className='dashboard-page'>
 
       {/* HEADER */}
@@ -64,11 +64,10 @@ const Dashboard=()=>{
 
             {
               user?.name &&
-              ` ${
-                user.name.charAt(0)
+              ` ${user.name.charAt(0)
                 .toUpperCase()
-                +
-                user.name.slice(1)
+              +
+              user.name.slice(1)
               }`
             }
 
@@ -143,8 +142,8 @@ const Dashboard=()=>{
           </h2>
 
           <button
-            onClick={()=>
-              window.location.href=
+            onClick={() =>
+              window.location.href =
               '/transactions'
             }
           >
@@ -177,48 +176,48 @@ const Dashboard=()=>{
 
             {
               transactions
-              .slice(-5)
-              .reverse()
-              .map((item)=>(
+                .slice(-5)
+                .reverse()
+                .map((item) => (
 
-                <tr key={item.id}>
+                  <tr key={item.id}>
 
-                  <td>
-                    #{item.id}
-                  </td>
+                    <td>
+                      #{item.id}
+                    </td>
 
-                  <td>
-                    {item.sender}
-                  </td>
+                    <td>
+                      {item.sender}
+                    </td>
 
-                  <td>
-                    {item.receiver}
-                  </td>
+                    <td>
+                      {item.receiver}
+                    </td>
 
-                  <td>
-                    {item.amount}
-                  </td>
+                    <td>
+                      {item.amount}
+                    </td>
 
-                  <td>
+                    <td>
 
-                    <span
-                      className={
-                        item.status===
-                        'Success'
-                        ?'success-status'
-                        :'pending-status'
-                      }
-                    >
+                      <span
+                        className={
+                          item.status ===
+                            'Success'
+                            ? 'success-status'
+                            : 'pending-status'
+                        }
+                      >
 
-                      {item.status}
+                        {item.status}
 
-                    </span>
+                      </span>
 
-                  </td>
+                    </td>
 
-                </tr>
+                  </tr>
 
-              ))
+                ))
             }
 
           </tbody>

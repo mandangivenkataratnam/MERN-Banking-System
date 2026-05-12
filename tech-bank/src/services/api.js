@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const API = axios.create({
-  baseURL: 'http://localhost:4300'
+  baseURL: 'https://mern-banking-system-mvxw.onrender.com'
 })
 
 export default API

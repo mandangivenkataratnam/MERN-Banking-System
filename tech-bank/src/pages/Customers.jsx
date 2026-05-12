@@ -1,69 +1,69 @@
-import React,{useEffect,useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import {FaUsers,FaSearch,FaEdit,FaTrash,FaTimes} from 'react-icons/fa'
+import { FaUsers, FaSearch, FaEdit, FaTrash, FaTimes } from 'react-icons/fa'
 import '../styles/customers.css'
 
-const Customers=()=>{
+const Customers = () => {
 
-  const [customers,setCustomers]=useState([])
-  const [search,setSearch]=useState('')
-  const [showModal,setShowModal]=useState(false)
-  const [editingId,setEditingId]=useState(null)
+  const [customers, setCustomers] = useState([])
+  const [search, setSearch] = useState('')
+  const [showModal, setShowModal] = useState(false)
+  const [editingId, setEditingId] = useState(null)
 
-  const [formData,setFormData]=useState({
-    name:'',
-    email:''
+  const [formData, setFormData] = useState({
+    name: '',
+    email: ''
   })
 
-  useEffect(()=>{
+  useEffect(() => {
     fetchCustomers()
-  },[])
+  }, [])
 
-  const fetchCustomers=async()=>{
+  const fetchCustomers = async () => {
 
-    try{
+    try {
 
-      const response=await axios.get(
-        'http://localhost:4300/customers'
+      const response = await axios.get(
+        'https://mern-banking-system-mvxw.onrender.com/customers'
       )
 
       setCustomers(response.data)
 
-    }catch(error){
+    } catch (error) {
       console.log(error)
     }
   }
 
-  const handleChange=(e)=>{
+  const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]:e.target.value
+      [e.target.name]: e.target.value
     })
   }
 
-  const handleSubmit=async(e)=>{
+  const handleSubmit = async (e) => {
 
     e.preventDefault()
 
-    try{
+    try {
 
-      if(!formData.name||!formData.email){
+      if (!formData.name || !formData.email) {
 
         alert('Please fill all fields')
         return
       }
 
-      if(editingId){
+      if (editingId) {
 
         await axios.put(
-          `http://localhost:4300/customers/${editingId}`,
+          `https://mern-banking-system-mvxw.onrender.com/customers/${editingId}`,
           formData
         )
 
-      }else{
+      } else {
 
         await axios.post(
-          'http://localhost:4300/customers',
+          'https://mern-banking-system-mvxw.onrender.com/customers',
           formData
         )
       }
@@ -74,51 +74,51 @@ const Customers=()=>{
       setEditingId(null)
 
       setFormData({
-        name:'',
-        email:''
+        name: '',
+        email: ''
       })
 
-    }catch(error){
+    } catch (error) {
 
       console.log(error)
       alert('Customer not saved')
     }
   }
 
-  const handleDelete=async(id)=>{
+  const handleDelete = async (id) => {
 
-    try{
+    try {
 
       await axios.delete(
-        `http://localhost:4300/customers/${id}`
+        `https://mern-banking-system-mvxw.onrender.com/customers/${id}`
       )
 
       fetchCustomers()
 
-    }catch(error){
+    } catch (error) {
       console.log(error)
     }
   }
 
-  const handleEdit=(customer)=>{
+  const handleEdit = (customer) => {
 
     setEditingId(customer._id)
 
     setFormData({
-      name:customer.name,
-      email:customer.email
+      name: customer.name,
+      email: customer.email
     })
 
     setShowModal(true)
   }
 
-  const filteredCustomers=customers.filter((item)=>
+  const filteredCustomers = customers.filter((item) =>
     item.name
       .toLowerCase()
       .includes(search.toLowerCase())
   )
 
-  return(
+  return (
 
     <div className='customers-page'>
 
@@ -138,14 +138,14 @@ const Customers=()=>{
 
         <button
           className='add-customer-btn'
-          onClick={()=>{
+          onClick={() => {
 
             setShowModal(true)
             setEditingId(null)
 
             setFormData({
-              name:'',
-              email:''
+              name: '',
+              email: ''
             })
           }}
         >
@@ -179,7 +179,7 @@ const Customers=()=>{
           type='text'
           placeholder='Search customers...'
           value={search}
-          onChange={(e)=>setSearch(e.target.value)}
+          onChange={(e) => setSearch(e.target.value)}
         />
 
       </div>
@@ -202,7 +202,7 @@ const Customers=()=>{
 
           <tbody>
 
-            {filteredCustomers.map((customer)=>(
+            {filteredCustomers.map((customer) => (
 
               <tr key={customer._id}>
 
@@ -216,14 +216,14 @@ const Customers=()=>{
 
                     <button
                       className='edit-btn'
-                      onClick={()=>handleEdit(customer)}
+                      onClick={() => handleEdit(customer)}
                     >
                       <FaEdit />
                     </button>
 
                     <button
                       className='delete-btn'
-                      onClick={()=>handleDelete(customer._id)}
+                      onClick={() => handleDelete(customer._id)}
                     >
                       <FaTrash />
                     </button>
@@ -244,7 +244,7 @@ const Customers=()=>{
 
       {/* MODAL */}
 
-      {showModal&&(
+      {showModal && (
 
         <div className='customer-modal-overlay'>
 
@@ -254,13 +254,13 @@ const Customers=()=>{
 
               <h2>
                 {editingId
-                  ?'Edit Customer'
-                  :'Add Customer'}
+                  ? 'Edit Customer'
+                  : 'Add Customer'}
               </h2>
 
               <button
                 className='close-modal-btn'
-                onClick={()=>setShowModal(false)}
+                onClick={() => setShowModal(false)}
               >
                 <FaTimes />
               </button>
@@ -302,8 +302,8 @@ const Customers=()=>{
                 className='save-customer-btn'
               >
                 {editingId
-                  ?'Update Customer'
-                  :'Save Customer'}
+                  ? 'Update Customer'
+                  : 'Save Customer'}
               </button>
 
             </form>

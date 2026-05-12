@@ -1,33 +1,33 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
-import {useNavigate} from 'react-router-dom'
-import {FaEnvelope,FaLock,FaUniversity} from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom'
+import { FaEnvelope, FaLock, FaUniversity } from 'react-icons/fa'
 import '../styles/login.css'
 
-const Login=()=>{
+const Login = () => {
 
-  const navigate=useNavigate()
+  const navigate = useNavigate()
 
-  const [formData,setFormData]=useState({
-    email:'',
-    password:'',
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
   })
 
-  const [error,setError]=useState('')
+  const [error, setError] = useState('')
 
-  const handleChange=(e)=>{
+  const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]:e.target.value,
+      [e.target.name]: e.target.value,
     })
   }
 
-  const handleLogin=async(e)=>{
+  const handleLogin = async (e) => {
     e.preventDefault()
 
-    try{
-      const response=await axios.post(
-        'http://localhost:4300/auth/login',
+    try {
+      const response = await axios.post(
+        'https://mern-banking-system-mvxw.onrender.com/auth/login',
         formData
       )
 
@@ -38,12 +38,12 @@ const Login=()=>{
 
       navigate('/')
 
-    }catch(error){
+    } catch (error) {
       setError('Invalid Email or Password')
     }
   }
 
-  return(
+  return (
     <div className='login-page'>
 
       <div className='login-container'>
@@ -78,7 +78,7 @@ const Login=()=>{
             to continue
           </p>
 
-          {error&&(
+          {error && (
             <p className='login-error'>
               {error}
             </p>

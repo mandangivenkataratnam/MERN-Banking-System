@@ -1,99 +1,99 @@
-import React,{useEffect,useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import {FaMapMarkerAlt,FaPhoneAlt,FaUserTie,FaBuilding,FaTimes,FaEnvelope,FaTrash,FaEdit,FaPlus} from 'react-icons/fa'
+import { FaMapMarkerAlt, FaPhoneAlt, FaUserTie, FaBuilding, FaTimes, FaEnvelope, FaTrash, FaEdit, FaPlus } from 'react-icons/fa'
 import '../styles/branches.css'
 
-const Branches=()=>{
+const Branches = () => {
 
-  const [branches,setBranches]=useState([])
-  const [selectedBranch,setSelectedBranch]=useState(null)
-  const [showModal,setShowModal]=useState(false)
-  const [isEdit,setIsEdit]=useState(false)
+  const [branches, setBranches] = useState([])
+  const [selectedBranch, setSelectedBranch] = useState(null)
+  const [showModal, setShowModal] = useState(false)
+  const [isEdit, setIsEdit] = useState(false)
 
-  const [formData,setFormData]=useState({
-    id:'',
-    branch:'',
-    manager:'',
-    phone:'',
-    location:'',
-    email:''
+  const [formData, setFormData] = useState({
+    id: '',
+    branch: '',
+    manager: '',
+    phone: '',
+    location: '',
+    email: ''
   })
 
-  useEffect(()=>{
+  useEffect(() => {
     fetchBranches()
-  },[])
+  }, [])
 
-  const fetchBranches=async()=>{
+  const fetchBranches = async () => {
 
-    try{
+    try {
 
-      const response=await axios.get(
-        'http://localhost:4300/branches'
+      const response = await axios.get(
+        'https://mern-banking-system-mvxw.onrender.com/branches'
       )
 
       setBranches(response.data)
 
-    }catch(error){
+    } catch (error) {
       console.log(error)
     }
   }
 
-  const handleChange=(e)=>{
+  const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]:e.target.value
+      [e.target.name]: e.target.value
     })
   }
 
   // ADD BRANCH
 
-  const handleAddBranch=async(e)=>{
+  const handleAddBranch = async (e) => {
 
     e.preventDefault()
 
-    try{
+    try {
 
       await axios.post(
-        'http://localhost:4300/branches',
+        'https://mern-banking-system-mvxw.onrender.com/branches',
         formData
       )
 
       fetchBranches()
       resetForm()
 
-    }catch(error){
+    } catch (error) {
       console.log(error)
     }
   }
 
   // DELETE BRANCH
 
-  const handleDeleteBranch=async(id)=>{
+  const handleDeleteBranch = async (id) => {
 
-    try{
+    try {
 
       await axios.delete(
-        `http://localhost:4300/branches/${id}`
+        `https://mern-banking-system-mvxw.onrender.com/branches/${id}`
       )
 
       fetchBranches()
 
-    }catch(error){
+    } catch (error) {
       console.log(error)
     }
   }
 
   // EDIT BRANCH
 
-  const handleEditBranch=(branch)=>{
+  const handleEditBranch = (branch) => {
 
     setFormData({
-      _id:branch._id,
-      branch:branch.branch,
-      manager:branch.manager,
-      phone:branch.phone,
-      location:branch.location,
-      email:branch.email
+      _id: branch._id,
+      branch: branch.branch,
+      manager: branch.manager,
+      phone: branch.phone,
+      location: branch.location,
+      email: branch.email
     })
 
     setShowModal(true)
@@ -102,43 +102,43 @@ const Branches=()=>{
 
   // UPDATE BRANCH
 
-  const handleUpdateBranch=async(e)=>{
+  const handleUpdateBranch = async (e) => {
 
     e.preventDefault()
 
-    try{
+    try {
 
       await axios.put(
-        `http://localhost:4300/branches/${formData._id}`,
+        `https://mern-banking-system-mvxw.onrender.com/branches/${formData._id}`,
         formData
       )
 
       fetchBranches()
       resetForm()
 
-    }catch(error){
+    } catch (error) {
       console.log(error)
     }
   }
 
   // RESET FORM
 
-  const resetForm=()=>{
+  const resetForm = () => {
 
     setFormData({
-      _id:'',
-      branch:'',
-      manager:'',
-      phone:'',
-      location:'',
-      email:''
+      _id: '',
+      branch: '',
+      manager: '',
+      phone: '',
+      location: '',
+      email: ''
     })
 
     setShowModal(false)
     setIsEdit(false)
   }
 
-  return(
+  return (
 
     <div className='branches-page'>
 
@@ -160,7 +160,7 @@ const Branches=()=>{
 
         <button
           className='add-branch-btn'
-          onClick={()=>{
+          onClick={() => {
 
             setShowModal(true)
             setIsEdit(false)
@@ -179,7 +179,7 @@ const Branches=()=>{
 
       <div className='branches-grid'>
 
-        {branches.map((item)=>(
+        {branches.map((item) => (
 
           <div
             className='branch-card'
@@ -217,7 +217,7 @@ const Branches=()=>{
 
               <button
                 className='branch-btn'
-                onClick={()=>
+                onClick={() =>
                   setSelectedBranch(item)
                 }
               >
@@ -226,7 +226,7 @@ const Branches=()=>{
 
               <button
                 className='edit-branch-btn'
-                onClick={()=>
+                onClick={() =>
                   handleEditBranch(item)
                 }
               >
@@ -235,7 +235,7 @@ const Branches=()=>{
 
               <button
                 className='delete-branch-btn'
-                onClick={()=>
+                onClick={() =>
                   handleDeleteBranch(item._id)
                 }
               >
@@ -252,7 +252,7 @@ const Branches=()=>{
 
       {/* VIEW MODAL */}
 
-      {selectedBranch&&(
+      {selectedBranch && (
 
         <div className='branch-modal-overlay'>
 
@@ -260,7 +260,7 @@ const Branches=()=>{
 
             <button
               className='close-branch-modal'
-              onClick={()=>
+              onClick={() =>
                 setSelectedBranch(null)
               }
             >
@@ -359,7 +359,7 @@ const Branches=()=>{
 
       {/* ADD / EDIT MODAL */}
 
-      {showModal&&(
+      {showModal && (
 
         <div className='branch-modal-overlay'>
 
@@ -369,8 +369,8 @@ const Branches=()=>{
 
               <h2>
                 {isEdit
-                  ?'Edit Branch'
-                  :'Add Branch'}
+                  ? 'Edit Branch'
+                  : 'Add Branch'}
               </h2>
 
               <button
@@ -385,8 +385,8 @@ const Branches=()=>{
             <form
               onSubmit={
                 isEdit
-                ?handleUpdateBranch
-                :handleAddBranch
+                  ? handleUpdateBranch
+                  : handleAddBranch
               }
             >
 
@@ -441,8 +441,8 @@ const Branches=()=>{
               >
 
                 {isEdit
-                  ?'Update Branch'
-                  :'Save Branch'}
+                  ? 'Update Branch'
+                  : 'Save Branch'}
 
               </button>
 

@@ -33,7 +33,7 @@ const Transactions = () => {
   const fetchTransactions = async () => {
     try {
       const response = await axios.get(
-        'http://localhost:4300/transactions'
+        'https://mern-banking-system-mvxw.onrender.com/transactions'
       )
 
       setTransactions(response.data)
@@ -68,12 +68,12 @@ const Transactions = () => {
 
       if (editingId) {
         await axios.put(
-          `http://localhost:4300/transactions/${editingId}`,
+          `https://mern-banking-system-mvxw.onrender.com/transactions/${editingId}`,
           transactionData
         )
       } else {
         await axios.post(
-          'http://localhost:4300/transactions',
+          'https://mern-banking-system-mvxw.onrender.com/transactions',
           transactionData
         )
       }
@@ -97,7 +97,7 @@ const Transactions = () => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(
-        `http://localhost:4300/transactions/${id}`
+        `https://mern-banking-system-mvxw.onrender.com/transactions/${id}`
       )
 
       fetchTransactions()
